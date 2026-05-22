@@ -7,10 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import com.layane.task.R
 import com.layane.task.databinding.FragmentDoingBinding
-import com.layane.task.databinding.FragmentTodoBinding
+import com.layane.task.databinding.FragmentDoneBinding
+import com.layane.task.databinding.FragmentHomeBinding
 
-class TodoFragment : Fragment() {
-    private var _binding: FragmentTodoBinding? = null
+class DoneFragment : Fragment() {
+    private var _binding: FragmentDoneBinding? = null
     private val biding get() = _binding!!
 
     override fun onCreateView(
@@ -18,7 +19,7 @@ class TodoFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentTodoBinding.inflate(inflater, container, false)
+        _binding = FragmentDoneBinding.inflate(inflater, container, false)
         return biding.root
     }
 
