@@ -6,10 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.layane.task.R
+import com.layane.task.databinding.FragmentLoginBinding
 import com.layane.task.databinding.FragmentRecoverAccountBinding
+import com.layane.task.util.initToolbar
+
 
 class RecoverAccountFragment : Fragment() {
-
     private var _binding: FragmentRecoverAccountBinding? =null
     private val  binding get() = _binding!!
 
@@ -21,6 +23,31 @@ class RecoverAccountFragment : Fragment() {
         return binding.root
         // Inflate the layout for this fragment
         }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initToolbar(binding.toolbar)
+        initListeners()
+    }
+
+    private fun initListeners() {
+        binding.buttonEntrar.setOnClickListener {
+            validateData()
+        }
+    }
+
+    private fun validateData() {
+        val email = binding.editTextEmail.text.toString().trim()
+
+        if (email.isNotBlank()) {
+            Toast.makeText(requireContext(), "Tudo OK!", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(
+                requireContext(),
+                "Preencha seu email válido!",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

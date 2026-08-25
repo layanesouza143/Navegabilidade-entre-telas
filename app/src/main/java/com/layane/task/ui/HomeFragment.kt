@@ -8,8 +8,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayoutMediator
 import com.layane.task.R
 import com.layane.task.databinding.FragmentHomeBinding
-import com.marta.task.ui.adapter.ViewPagerAdapter
-
+import com.layane.task.ui.adapter.ViewPagerAdapter
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
@@ -34,12 +33,10 @@ class HomeFragment : Fragment() {
     private fun initTabs() {
 
         val pageAdapter = ViewPagerAdapter(requireActivity())
-
+        binding.viewPager.adapter = pageAdapter
         pageAdapter.addFragment(TodoFragment(), R.string.status_task_todo)
         pageAdapter.addFragment(DoingFragment(), R.string.status_task_doing)
         pageAdapter.addFragment(DoneFragment(), R.string.status_task_done)
-
-        binding.viewPager.adapter = pageAdapter
 
         binding.viewPager.offscreenPageLimit = pageAdapter.itemCount
 

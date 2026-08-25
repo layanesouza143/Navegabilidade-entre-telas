@@ -10,20 +10,13 @@ import com.layane.task.databinding.FragmentDoingBinding
 import com.layane.task.databinding.FragmentHomeBinding
 
 class DoingFragment : Fragment() {
-    private var _binding: FragmentDoingBinding? = null
-    private val biding get() = _binding!!
 
         override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
         ): View {
-            _binding = FragmentDoingBinding.inflate(inflater, container, false)
-            return biding.root
+           return inflater.inflate(R.layout.fragment_doing,container,false)
         }
 
-        override fun onDestroyView() {
-            super.onDestroyView()
-            _binding = null
-        }
     }

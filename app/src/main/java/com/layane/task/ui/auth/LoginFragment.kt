@@ -8,9 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.layane.task.R
 import com.layane.task.databinding.FragmentLoginBinding
+import com.layane.task.databinding.FragmentSplashBinding
 
 class LoginFragment : Fragment() {
-
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
 
@@ -26,12 +26,12 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        initToolbar(binding.toolbar)
         initListener()
     }
 
     private fun initListener() {
-        binding.bntLogin.setOnClickListener {
+        binding.buttonLogin.setOnClickListener {
             findNavController().navigate(R.id.action_global_homeFragment)
         }
 
@@ -41,6 +41,23 @@ class LoginFragment : Fragment() {
 
         binding.btnRecover.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_recoverAccountFragment)
+        }
+
+    }
+
+    private fun validateData() {
+        val email = binding.editTextEmail.text.toString().trim()
+        val senha = binding.editTextSenha.text.toString().trim()
+
+        if (email.isNotBlank()) {
+            if (senha.isNotBlank()) {
+                //Comentário temporário somente para testar a validação dos dados
+                findNavController().navigate(R.id.action_global_homeFragment)
+            } else {
+                Toast.makeText(requireContext(), "Preencha a senha!", Toast.LENGTH_SHORT).show()
+            }
+        } else {
+            Toast.makeText(requireContext(), "Preencha seu email!", Toast.LENGTH_SHORT).show()
         }
     }
 
