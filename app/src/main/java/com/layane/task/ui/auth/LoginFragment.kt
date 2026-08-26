@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.layane.task.R
@@ -26,7 +27,6 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initToolbar(binding.toolbar)
         initListener()
     }
 
@@ -42,22 +42,21 @@ class LoginFragment : Fragment() {
         binding.btnRecover.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_recoverAccountFragment)
         }
-
+//Toast.makeText(requireContext(), "Preencha a senha!", Toast.LENGTH_SHORT).show()
     }
-
     private fun validateData() {
-        val email = binding.editTextEmail.text.toString().trim()
-        val senha = binding.editTextSenha.text.toString().trim()
+        val email = binding.editextEmail.text.toString().trim()
+        val senha = binding.editextSenha.text.toString().trim()
 
         if (email.isNotBlank()) {
             if (senha.isNotBlank()) {
                 //Comentário temporário somente para testar a validação dos dados
                 findNavController().navigate(R.id.action_global_homeFragment)
             } else {
-                Toast.makeText(requireContext(), "Preencha a senha!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Preencha a senha!", Toast.LENGTH_SHORT)
             }
         } else {
-            Toast.makeText(requireContext(), "Preencha seu email!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Preencha um email!", Toast.LENGTH_SHORT).show()
         }
     }
 
