@@ -44,10 +44,10 @@ class RegisterFragment : Fragment() {
 //Toast.makeText(requireContext(), "Preencha a senha!", Toast.LENGTH_SHORT).show()
         if (email.isNotBlank()) {
             if (senha.isNotBlank()) {
-                //Comentário temporário somente para testar a validação dos dados
-                findNavController().navigate(R.id.action_global_homeFragment)
+                Toast.makeText(requireContext(), "Tudo OK!", Toast.LENGTH_SHORT).show()
+
             } else {
-                Toast.makeText(requireContext(), "Preencha a senha!", Toast.LENGTH_SHORT)
+                Toast.makeText(requireContext(), "Preencha a senha!", Toast.LENGTH_SHORT).show()
             }
         } else {
             Toast.makeText(requireContext(), "Preencha um email!", Toast.LENGTH_SHORT).show()
