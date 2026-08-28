@@ -10,6 +10,7 @@ import com.layane.task.R
 import com.layane.task.databinding.FragmentLoginBinding
 import com.layane.task.databinding.FragmentRecoverAccountBinding
 import com.layane.task.util.initToolbar
+import com.layane.task.util.showBottonSheet
 
 
 class RecoverAccountFragment : Fragment() {
@@ -41,7 +42,7 @@ class RecoverAccountFragment : Fragment() {
         if (email.isNotBlank()) {
             Toast.makeText(requireContext(), "Tudo Ok!", Toast.LENGTH_SHORT).show()
         } else {
-            Toast.makeText (requireContext(), "Preencha um email válido!",Toast.LENGTH_SHORT).show()
+            showBottonSheet(mensage = getString(R.string.password_empty))
         }
     }
 

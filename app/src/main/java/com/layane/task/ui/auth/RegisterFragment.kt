@@ -11,6 +11,7 @@ import com.layane.task.R
 import com.layane.task.databinding.FragmentRegisterBinding
 import com.layane.task.databinding.FragmentSplashBinding
 import com.layane.task.util.initToolbar
+import com.layane.task.util.showBottonSheet
 
 
 class RegisterFragment : Fragment() {
@@ -41,16 +42,15 @@ class RegisterFragment : Fragment() {
     private fun validateData() {
         val email = binding.editextEmail.text.toString().trim()
         val senha = binding.editextSenha.text.toString().trim()
-//Toast.makeText(requireContext(), "Preencha a senha!", Toast.LENGTH_SHORT).show()
         if (email.isNotBlank()) {
             if (senha.isNotBlank()) {
                 Toast.makeText(requireContext(), "Tudo OK!", Toast.LENGTH_SHORT).show()
 
             } else {
-                Toast.makeText(requireContext(), "Preencha a senha!", Toast.LENGTH_SHORT).show()
+                showBottonSheet(mensage = R.string.password_empty_register_fragment)
             }
         } else {
-            Toast.makeText(requireContext(), "Preencha um email!", Toast.LENGTH_SHORT).show()
+            showBottonSheet(mensage = R.string.email_empty_register_fragment)
         }
     }
 

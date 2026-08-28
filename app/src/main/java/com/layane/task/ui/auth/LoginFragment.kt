@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.layane.task.R
 import com.layane.task.databinding.FragmentLoginBinding
 import com.layane.task.databinding.FragmentSplashBinding
+import com.layane.task.util.showBottonSheet
 
 class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
@@ -42,7 +43,6 @@ class LoginFragment : Fragment() {
         binding.btnRecover.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_recoverAccountFragment)
         }
-//Toast.makeText(requireContext(), "Preencha a senha!", Toast.LENGTH_SHORT).show()
     }
     private fun validateData() {
         val email = binding.editextEmail.text.toString().trim()
@@ -50,13 +50,12 @@ class LoginFragment : Fragment() {
 
         if (email.isNotBlank()) {
             if (senha.isNotBlank()) {
-                //Comentário temporário somente para testar a validação dos dados
                 findNavController().navigate(R.id.action_global_homeFragment)
             } else {
-                Toast.makeText(requireContext(), "Preencha a senha!", Toast.LENGTH_SHORT)
+                showBottonSheet(mensage = getString(R.string.password_empty))
             }
         } else {
-            Toast.makeText(requireContext(), "Preencha um email!", Toast.LENGTH_SHORT).show()
+            showBottonSheet(mensage = getString(R.string.email_empty))
         }
     }
 
