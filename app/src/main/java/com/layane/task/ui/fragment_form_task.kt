@@ -39,7 +39,12 @@ class FormTaskFragment: Fragment() {
         if (description.isNotBlank()){
             Toast.makeText(requireContext(), "Tudo OK!", Toast.LENGTH_SHORT).show()
         }else{
+            //mensage = R.string.description_empty_form_task_fragment
             showBottonSheet(mensage = R.string.description_empty_form_task_fragment)
         }
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
