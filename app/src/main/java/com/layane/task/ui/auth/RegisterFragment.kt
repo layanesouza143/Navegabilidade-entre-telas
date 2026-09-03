@@ -47,10 +47,10 @@ class RegisterFragment : Fragment() {
                 Toast.makeText(requireContext(), "Tudo OK!", Toast.LENGTH_SHORT).show()
 
             } else {
-                showBottonSheet(mensage = R.string.password_empty_register_fragment)
+                showBottonSheet(mensage = getString(R.string.password_empty_register_fragment))
             }
         } else {
-            showBottonSheet(mensage = R.string.email_empty_register_fragment)
+            showBottonSheet(mensage = getString(R.string.email_empty_register_fragment))
         }
     }
 

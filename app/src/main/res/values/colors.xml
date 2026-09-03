@@ -3,6 +3,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="color_default">#673AB7</color>
+
+    <color name="color_status_todo">#D650ED</color>
+    <color name="color_status_done">#DE29FD</color>
     
     <color name="color_details">#C76DFF</color>
     <color name="color_delete">#6A1795</color>

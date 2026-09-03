@@ -1,12 +1,18 @@
 package com.layane.task.ui.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
+import androidx.navigation.ui.R
 import androidx.recyclerview.widget.RecyclerView
+import com.layane.task.data.model.Status
 import com.layane.task.data.model.Task
 import com.layane.task.databinding.ItemTaskBinding
 
 class TaskAdapter(
+    private val context: Context,
     private val taskList: List<Task>
 ) : RecyclerView.Adapter<TaskAdapter.MyViewHolder>() {
 
@@ -20,6 +26,23 @@ class TaskAdapter(
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val task = taskList[position]
         holder.binding.textDescription.text = task.description
+
+        setIndicators(task, holder)
+    }
+    private fun setIndicators(task: Task, holder: MyViewHolder){
+        when (task.status){
+            Status.TODO -> {
+                holder.binding.buttonBack.isVisible = false
+            }
+            Status.DOING -> {
+                holder.binding.buttonBack.setColorFilter(ContextCompat.getColor(context, R.color.color_status_todo))
+                holder.binding.buttonForward.setColorFilter( ContextCompat.getColor(context, R.color.color_status_done))
+
+            }
+            Status.DONE -> {
+                holder.binding.buttonForward.isVisible = false
+            }
+        }
     }
 
     inner class MyViewHolder(val binding: ItemTaskBinding): RecyclerView.ViewHolder(binding.root){
