@@ -30,5 +30,14 @@
     <string name="text_button_recover_account_fragment">Enviar</string>
     <!--Form Task Fragment-->
     <string name="description_empty_form_task_fragment">Preencha uma descrição.</string>
+    
+    <string name="text_delete_sucess_task">Deletado com sucesso</string>
+    <string name="error_generic">Erro</string>
+    <string name="text_save_sucess_form_task_fragment">Salvo com sucesso</string>
+    <string name="text_list_task_empty">lista</string>
+
+    <string name="text_title_dialog_delete">Delete</string>
+    <string name="text_message_dialog_delete">Deletado</string>
+    <string name="text_button_dialog_confirm">Confirmar</string>
 
 </resources>

@@ -11,9 +11,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.layane.task.R
 import com.layane.task.data.model.Status
 import com.layane.task.data.model.Task
-import com.layane.task.databinding.FragmentDoingBinding
 import com.layane.task.databinding.FragmentTodoBinding
 import com.layane.task.ui.adapter.TaskAdapter
+
 
 class TodoFragment : Fragment() {
     private var _binding: FragmentTodoBinding? = null
@@ -31,8 +31,9 @@ class TodoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initListeners()
+        initRecyclerViewTask()
+        getTask()
 
-        initRecyclerViewTask(getTask())
     }
 
     private fun initListeners(){
@@ -42,12 +43,12 @@ class TodoFragment : Fragment() {
     }
 
     private fun initRecyclerViewTask(taskList: List<Task>){
-
-        taskAdapter = TaskAdapter(requireContext(), taskList){task, option -> optionSelected(task, option)}
-        biding.recyclerViewTask.layoutManager = LinearLayoutManager(requireContext())
-        biding.recyclerViewTask.setHasFixedSize(true)
-        biding.recyclerViewTask.adapter = taskAdapter
-
+        taskAdapter = TaskAdapter(requireContext()){task, option -> optionSelected(task, option)}
+        with(biding.recyclerViewTask){
+            layoutManager = LinearLayoutManager(requireContext())
+            setHasFixedSize(true)
+            adapter = taskAdapter
+        }
     }
 
     private fun optionSelected(task: Task, option: Int){
@@ -68,15 +69,18 @@ class TodoFragment : Fragment() {
         }
     }
 
+    private fun getTask() {
+        val taskList = listOf(
+            Task("0", "Criar nova tela do app", Status.TODO),
+            Task("0", "Validar informações na tela de login", Status.TODO),
+            Task("0", "Adicionar nova funcionalidade no app", Status.TODO),
+            Task("0", "Salvar token localmente", Status.TODO),
+            Task("0", "Criar funcionalidade de layout no app", Status.TODO),
+        )
+        taskAdapter.submitList(taskList)
+    }
 
-    private fun getTask() = listOf(
-        Task("0", "Criar nova tela do app", Status.TODO),
-        Task("0", "Validar informações na tela de login", Status.TODO),
-        Task("0", "Adicionar nova funcionalidade no app", Status.TODO),
-        Task("0", "Salvar token localmente", Status.TODO),
-        Task("0", "Criar funcionalidade de layout no app", Status.TODO),
 
-    )
 
     override fun onDestroyView() {
         super.onDestroyView()
