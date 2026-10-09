@@ -31,7 +31,9 @@ class DoingFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initRecyclerViewTask()
+        initRecyclerViewTask(
+            taskList = TODO()
+        )
         getTask()
     }
 

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "472415574985",
+    "project_id": "task-27449",
+    "storage_bucket": "task-27449.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:472415574985:android:b29215b945ee685ce2e618",
+        "android_client_info": {
+          "package_name": "com.layane.task"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfN6ZKbL8lf7zQAMmj0DqpeuHzKvkcDWg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

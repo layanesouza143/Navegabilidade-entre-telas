@@ -5,14 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.tabs.TabLayoutMediator
+import com.google.firebase.auth.FirebaseAuth
 import com.layane.task.R
 import com.layane.task.databinding.FragmentHomeBinding
 import com.layane.task.ui.adapter.ViewPagerAdapter
+import com.layane.task.util.showBottomSheet
+
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,10 +31,25 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        auth = FirebaseAuth.getInstance()
 
+        initListeners()
         initTabs()
     }
 
+    private fun initListeners() {
+        binding.btnLogout.setOnClickListener {
+            showBottomSheet(
+                titleDialog = R.string.text_title_dialog_confirm_logout,
+                titleButton = R.string.text_button_dialog_confirm_logout,
+                message = getString(R.string.text_message_dialog_confirm_logout),
+                onClick = {
+                    auth.signOut()
+                    findNavController().navigate(R.id.action_homeFragment_to_authentication)
+                }
+            )
+        }
+    }
     private fun initTabs() {
 
         val pageAdapter = ViewPagerAdapter(requireActivity())
