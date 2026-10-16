@@ -11,7 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.layane.task.R
 import com.layane.task.databinding.FragmentRegisterBinding
 import com.layane.task.util.initToolbar
-import com.layane.task.util.showBottonSheet
+import com.layane.task.util.showBottomSheet
 import com.google.firebase.auth.FirebaseAuth
 
 
@@ -51,10 +51,10 @@ class RegisterFragment : Fragment() {
                 registerUser(email,senha)
 
             } else {
-                showBottonSheet(mensage = getString(R.string.password_empty_register_fragment))
+                showBottomSheet(mensage = getString(R.string.password_empty_register_fragment))
             }
         } else {
-            showBottonSheet(mensage = getString(R.string.email_empty_register_fragment))
+            showBottomSheet(mensage = getString(R.string.email_empty_register_fragment))
         }
     }
 

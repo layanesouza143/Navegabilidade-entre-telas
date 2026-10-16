@@ -20,7 +20,8 @@ fun Fragment.showBottomSheet(
     titleDialog: Int? = null,
     titleButton: Int? = null,
     message: String? = null,
-    onClick: () -> Unit = {}
+    onClick: () -> Unit = {},
+    mensage: String
 ) {
     val bottomSheetDialog = BottomSheetDialog(requireContext(), R.style.bottomSheetDiaLog)
     val binding = BottomSheetBinding.inflate(layoutInflater, null, false)

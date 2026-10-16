@@ -14,7 +14,6 @@ import com.layane.task.data.model.Task
 import com.layane.task.databinding.FragmentTodoBinding
 import com.layane.task.ui.adapter.TaskAdapter
 
-
 class TodoFragment : Fragment() {
     private var _binding: FragmentTodoBinding? = null
     private val biding get() = _binding!!
@@ -28,14 +27,12 @@ class TodoFragment : Fragment() {
         _binding = FragmentTodoBinding.inflate(inflater, container, false)
         return biding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initListeners()
-        initRecyclerViewTask(
-            taskList = TODO()
-        )
+        initRecyclerViewTask()
         getTask()
-
     }
 
     private fun initListeners(){
@@ -44,8 +41,8 @@ class TodoFragment : Fragment() {
         }
     }
 
-    private fun initRecyclerViewTask(taskList: List<Task>){
-        taskAdapter = TaskAdapter(requireContext()){task, option -> optionSelected(task, option)}
+    private fun initRecyclerViewTask(){
+        taskAdapter = TaskAdapter(requireContext()) { task, option -> optionSelected(task, option) }
         with(biding.recyclerViewTask){
             layoutManager = LinearLayoutManager(requireContext())
             setHasFixedSize(true)
@@ -55,17 +52,16 @@ class TodoFragment : Fragment() {
 
     private fun optionSelected(task: Task, option: Int){
         when (option){
-            TaskAdapter.SELECT_REMOVER->{
-                Toast.makeText(requireContext(), "Removendo $(task.description)", Toast.LENGTH_SHORT).show()
+            TaskAdapter.SELECT_REMOVER -> {
+                Toast.makeText(requireContext(), "Removendo ${task.description}", Toast.LENGTH_SHORT).show()
             }
-
-            TaskAdapter.SELECT_EDIT->{
-                Toast.makeText(requireContext(), "Editando $(task.description)", Toast.LENGTH_SHORT).show()
+            TaskAdapter.SELECT_EDIT -> {
+                Toast.makeText(requireContext(), "Editando ${task.description}", Toast.LENGTH_SHORT).show()
             }
-            TaskAdapter.SELECT_DETAILS->{
-                Toast.makeText(requireContext(), "Detalhes $(task.description)", Toast.LENGTH_SHORT).show()
+            TaskAdapter.SELECT_DETAILS -> {
+                Toast.makeText(requireContext(), "Detalhes ${task.description}", Toast.LENGTH_SHORT).show()
             }
-            TaskAdapter.SELECT_NEXT->{
+            TaskAdapter.SELECT_NEXT -> {
                 Toast.makeText(requireContext(), "Próximo", Toast.LENGTH_SHORT).show()
             }
         }
@@ -81,8 +77,6 @@ class TodoFragment : Fragment() {
         )
         taskAdapter.submitList(taskList)
     }
-
-
 
     override fun onDestroyView() {
         super.onDestroyView()

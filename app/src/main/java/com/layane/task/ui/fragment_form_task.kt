@@ -9,7 +9,7 @@ import android.widget.Toast
 import com.layane.task.R
 import com.layane.task.databinding.FragmentFormTaskBinding
 import com.layane.task.util.initToolbar
-import com.layane.task.util.showBottonSheet
+import com.layane.task.util.showBottomSheet
 
 class FormTaskFragment: Fragment() {
     private var _binding: FragmentFormTaskBinding? = null
@@ -40,7 +40,7 @@ class FormTaskFragment: Fragment() {
             Toast.makeText(requireContext(), "Tudo OK!", Toast.LENGTH_SHORT).show()
         }else{
             //mensage = R.string.description_empty_form_task_fragment
-            showBottonSheet(mensage =getString(R.string.description_empty_form_task_fragment))
+            showBottomSheet(mensage =getString(R.string.description_empty_form_task_fragment))
         }
     }
     override fun onDestroyView() {
