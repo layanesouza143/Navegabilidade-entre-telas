@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.tabs.TabLayoutMediator
@@ -33,8 +34,9 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         auth = FirebaseAuth.getInstance()
 
-        initListeners()
-        initTabs()
+
+       initListeners()
+       initTabs()
     }
 
     private fun initListeners() {
@@ -50,7 +52,10 @@ class HomeFragment : Fragment() {
                 ""
             )
         }
+
+
     }
+
     private fun initTabs() {
 
         val pageAdapter = ViewPagerAdapter(requireActivity())
@@ -64,6 +69,8 @@ class HomeFragment : Fragment() {
         TabLayoutMediator(binding.tabs, binding.viewPager) { tab, position ->
             tab.text = getString(pageAdapter.getTitle(position))
         }.attach()
+
+
     }
 
     override fun onDestroyView() {
