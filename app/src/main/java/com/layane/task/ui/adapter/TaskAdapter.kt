@@ -30,14 +30,14 @@ class TaskAdapter(
                 oldItem: Task,
                 newItem: Task
             ): Boolean {
-                return oldItem.id == newItem.id
+                return oldItem.id == newItem.id && oldItem.description == newItem.description
             }
 
             override fun areContentsTheSame(
                 oldItem: Task,
                 newItem: Task
             ): Boolean {
-                return oldItem == newItem
+                return oldItem == newItem && oldItem.description == newItem.description
             }
         }
     }

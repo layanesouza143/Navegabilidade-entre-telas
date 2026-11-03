@@ -45,4 +45,6 @@
     <string name="text_message_dialog_delete">Deletado</string>
     <string name="text_button_dialog_confirm">Confirmar</string>
 
+    <string name="text_message_recover_account_fragment">Email de recuperação enviado</string>
+
 </resources>
