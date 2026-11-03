@@ -63,7 +63,6 @@ class TodoFragment : Fragment() {
             }
             TaskAdapter.SELECT_NEXT -> {
                 task.status = Status.DOING
-                updateTask(task)
                 Toast.makeText(requireContext(), "Próximo", Toast.LENGTH_SHORT).show()
             }
         }
@@ -78,36 +77,6 @@ class TodoFragment : Fragment() {
             Task("0", "Criar funcionalidade de layout no app", Status.TODO),
         )
         taskAdapter.submitList(taskList)
-    }
-    private fun updateTask(task: Task){
-        FirebaseHelper.getDatabase()
-            .child("task")
-            .child(FirebaseHelper.getIdUSer())
-            .child(task.id)
-            .setValue(task).addOnCompleteListener { result ->
-                if (result.isSuccessful) {
-                    Toast.makeText(requireContext(), R.string.text_save_sucess_form_task_fragment, Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(requireContext(), R.string.error_generic, Toast.LENGTH_SHORT).show()
-                }
-            }
-
-    private fun deleteTAsk(task: Task) {
-        FirebaseHelper.getDatabase()
-            .child("task")
-            .child(FirebaseHelper.getIdUSer())
-            .child(task.id)
-            .removeValue().addOnCompleteListener { result ->
-                if (result.isSuccessful) {
-                    Toast.makeText(requireContext(), R.string.text_delete_sucess_task, Toast.LENGTH_SHORT).show()
-
-                    val oldList = taskAdapter.currentList
-                    val newList = oldList.toMutableList().apply { remove(task) }
-                    taskAdapter.submitList(newList)
-                } else {
-                    Toast.makeText(requireContext(), R.string.error_generic, Toast.LENGTH_SHORT).show()
-                }
-            }
     }
 
     override fun onDestroyView() {
